@@ -1,7 +1,7 @@
 # Visual Studio
-Debug/
-Release/
-.vs/
+esqueleto/Debug/
+esqueleto/Release/
+esqueleto/.vs/
 
 # Prerequisites
 *.d
