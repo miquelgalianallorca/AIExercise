@@ -17,6 +17,9 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="params.cpp" />
+    <ClCompile Include="steeringSeek.cpp">
+      <Filter>steeringBehaviors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -32,6 +35,12 @@
     </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="params.h" />
+    <ClInclude Include="steering.h">
+      <Filter>steeringBehaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="steeringSeek.h">
+      <Filter>steeringBehaviors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="host">
@@ -40,10 +49,18 @@
     <Filter Include="sample">
       <UniqueIdentifier>{dafee91e-18b1-4dd7-a488-726565484f1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="steeringBehaviors">
+      <UniqueIdentifier>{d199541a-71a2-4434-90a5-157fb86d4edd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="sample\test.lua">
       <Filter>sample</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="sample\params.xml">
+      <Filter>sample</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

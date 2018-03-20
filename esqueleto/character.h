@@ -3,6 +3,7 @@
 
 #include <moaicore/MOAIEntity2D.h>
 #include <params.h>
+#include "steeringSeek.h"
 
 class Character: public MOAIEntity2D
 {
@@ -12,6 +13,7 @@ protected:
 	virtual void OnStart();
 	virtual void OnStop();
 	virtual void OnUpdate(float step);
+
 public:
 	virtual void DrawDebug();
 
@@ -21,15 +23,19 @@ public:
 	void SetLinearVelocity(float x, float y) { mLinearVelocity.mX = x; mLinearVelocity.mY = y;}
 	void SetAngularVelocity(float angle) { mAngularVelocity = angle;}
 	
-	USVec2D GetLinearVelocity() const { return mLinearVelocity;}
-	float GetAngularVelocity() const { return mAngularVelocity;}
+	USVec2D GetLinearVelocity()  const { return mLinearVelocity; }
+	float   GetAngularVelocity() const { return mAngularVelocity; }
+    float   GetMaxAcceleration() const { return mParams.max_acceleration; }
+    float   GetMaxVelocity()     const { return mParams.max_velocity; }
+
 private:
 	USVec2D mLinearVelocity;
 	float mAngularVelocity;
 	
 	Params mParams;
+    SteeringSeek steeringSeek;
 	
-	// Lua configuration
+// Lua configuration
 public:
 	virtual void RegisterLuaFuncs(MOAILuaState& state);
 private:

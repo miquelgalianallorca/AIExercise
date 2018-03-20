@@ -28,14 +28,38 @@ void Character::OnStop()
 
 void Character::OnUpdate(float step)
 {
+    // Update acceleration with steering
+    USVec2D linearAcceleration(0.f, 0.f);
+    float   angularAcceleration = 0.f;
+    steeringSeek.GetAcceleration(*this, mParams.targetPosition,
+        linearAcceleration, angularAcceleration);
+
+    // Update velocity with acceleration
+    USVec2D newLinearVel = GetLinearVelocity() +
+        linearAcceleration * step;
+    if (newLinearVel.Length() > mParams.max_velocity) {
+        newLinearVel.NormSafe();
+        newLinearVel.Scale(mParams.max_velocity);
+    }
+    SetLinearVelocity(newLinearVel.mX, newLinearVel.mY);
+    
+    // Update location and rotation
+    SetLoc(GetLoc() + GetLinearVelocity() * step);
+    SetRot(GetRot() + GetAngularVelocity() * step);
 }
 
 void Character::DrawDebug()
 {
 	MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
 	gfxDevice.SetPenColor(0.0f, 0.0f, 1.0f, 0.5f);
+    gfxDevice.SetPenWidth(3.f);
+    // Draw origin
+	MOAIDraw::DrawPoint(0.0f, 0.0f);
 
-	//MOAIDraw::DrawPoint(0.0f, 0.0f);
+    // Draw steering
+    MOAIDraw::DrawEllipseFill(mParams.targetPosition.mX, mParams.targetPosition.mY,
+        10.f, 10.f, 3);
+    steeringSeek.DrawDebug();
 }
 
 

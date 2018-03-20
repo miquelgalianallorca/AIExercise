@@ -134,6 +134,7 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="steeringSeek.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -143,9 +144,14 @@
     <ClInclude Include="host\ParticlePresets.h" />
     <ClInclude Include="params.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="steering.h" />
+    <ClInclude Include="steeringSeek.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sample\test.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="sample\params.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

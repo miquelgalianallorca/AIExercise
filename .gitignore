@@ -4,34 +4,34 @@ esqueleto/Release/
 esqueleto/.vs/
 
 # Prerequisites
-*.d
+esqueleto/*.d
 
 # Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+esqueleto/*.slo
+esqueleto/*.lo
+esqueleto/*.o
+esqueleto/*.obj
 
 # Precompiled Headers
-*.gch
-*.pch
+esqueleto/*.gch
+esqueleto/*.pch
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+esqueleto/*.so
+esqueleto/*.dylib
+esqueleto/*.dll
 
 # Fortran module files
-*.mod
-*.smod
+esqueleto/*.mod
+esqueleto/*.smod
 
 # Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+esqueleto/*.lai
+esqueleto/*.la
+esqueleto/*.a
+esqueleto/*.lib
 
 # Executables
-*.exe
-*.out
-*.app
+esqueleto/*.exe
+esqueleto/*.out
+esqueleto/*.app
