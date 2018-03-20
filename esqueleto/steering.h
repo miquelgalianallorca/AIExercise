@@ -1,7 +1,5 @@
 #pragma once
 
-#include <uslscore/USVec2D.h>
-
 class Character;
 
 class Steering {

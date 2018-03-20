@@ -134,6 +134,7 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="steeringArrive.cpp" />
     <ClCompile Include="steeringSeek.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="params.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="steering.h" />
+    <ClInclude Include="steeringArrive.h" />
     <ClInclude Include="steeringSeek.h" />
   </ItemGroup>
   <ItemGroup>
