@@ -31,7 +31,7 @@ void Character::OnUpdate(float step)
     // Update acceleration with steering
     USVec2D linearAcceleration(0.f, 0.f);
     float   angularAcceleration = 0.f;
-    steeringArrive.GetAcceleration(*this, mParams,
+    steeringAlign.GetAcceleration(*this, mParams,
         linearAcceleration, angularAcceleration);
 
     // Update velocity with acceleration
@@ -42,6 +42,7 @@ void Character::OnUpdate(float step)
         newLinearVel.Scale(mParams.max_velocity);
     }
     SetLinearVelocity(newLinearVel.mX, newLinearVel.mY);
+    SetAngularVelocity(GetAngularVelocity() + angularAcceleration * step);
     
     // Update location and rotation
     SetLoc(GetLoc() + GetLinearVelocity() * step);
@@ -57,11 +58,11 @@ void Character::DrawDebug()
 	MOAIDraw::DrawPoint(0.0f, 0.0f);
 
     // Draw steering
-    MOAIDraw::DrawEllipseFill(mParams.targetPosition.mX, mParams.targetPosition.mY,
+    /*MOAIDraw::DrawEllipseFill(mParams.targetPosition.mX, mParams.targetPosition.mY,
         10.f, 10.f, 3);
     MOAIDraw::DrawEllipseOutline(mParams.targetPosition.mX, mParams.targetPosition.mY,
-        mParams.arrive_radius, mParams.arrive_radius, 12);
-    steeringArrive.DrawDebug();
+        mParams.arrive_radius, mParams.arrive_radius, 12);*/
+    steeringAlign.DrawDebug();
 }
 
 

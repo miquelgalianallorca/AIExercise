@@ -6,10 +6,10 @@
     <arrive_radius value="100"></arrive_radius>
 		<targetPosition x="40" y="30"> </targetPosition>
 
-    <max_angular_velocity value="40"></max_angular_velocity>
-    <max_angular_acceleration value="40"></max_angular_acceleration>
+    <max_angular_velocity value="160"></max_angular_velocity>
+    <max_angular_acceleration value="160"></max_angular_acceleration>
 	  <angular_arrive_radius value="40"></angular_arrive_radius>
-    <angular_dest_radius value="40"></angular_dest_radius>
-    <targetRotation value="40"></targetRotation>
+    <angular_dest_radius value="25"></angular_dest_radius>
+    <targetRotation value="0"></targetRotation>
   </params>
 </root>

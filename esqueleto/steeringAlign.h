@@ -17,6 +17,7 @@ public:
 
 private:
     USVec2D characterLocation;
-    USVec2D desiredLinearVelocity;
-    USVec2D desiredLinearAcceleration;
+    float characterRotation;
+    float desiredAngularVelocity;
+    float desiredAngularAcceleration;
 };

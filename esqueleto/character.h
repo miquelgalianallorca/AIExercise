@@ -3,7 +3,7 @@
 
 #include <moaicore/MOAIEntity2D.h>
 #include <params.h>
-#include "steeringArrive.h"
+#include "steeringAlign.h"
 
 class Character: public MOAIEntity2D
 {
@@ -33,7 +33,7 @@ private:
 	float mAngularVelocity;
 	
 	Params mParams;
-    SteeringArrive steeringArrive;
+    SteeringAlign steeringAlign;
 	
 // Lua configuration
 public:

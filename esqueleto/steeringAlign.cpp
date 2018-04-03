@@ -9,34 +9,40 @@ void SteeringAlign::GetAcceleration(
     float &outAngularAcceleration)
 {
     characterLocation = character.GetLoc();
+    characterRotation = character.GetRot();
 
-    desiredLinearVelocity = params.targetPosition - character.GetLoc();
-    float length = desiredLinearVelocity.Length();
-    desiredLinearVelocity.NormSafe();
-    if (length > params.arrive_radius) {
-        desiredLinearVelocity.Scale(character.GetMaxVelocity());
+    desiredAngularVelocity = params.targetRotation - characterRotation;
+    
+    // Limit to range [-PI, PI]
+    if (desiredAngularVelocity > 180)
+        desiredAngularVelocity -= 2 * 180;
+    else if (desiredAngularVelocity < -180)
+        desiredAngularVelocity += 2 * 180;
+    
+    if (desiredAngularVelocity > params.max_angular_velocity)
+        desiredAngularVelocity = params.max_angular_velocity;
+    
+    if (desiredAngularVelocity < params.angular_arrive_radius) {
+        float factor = desiredAngularVelocity / params.arrive_radius;
+        desiredAngularVelocity = params.max_angular_velocity * factor;
     }
-    else {
-        // Reduce speed
-        float factor = length / params.arrive_radius;
-        desiredLinearVelocity.Scale(character.GetMaxVelocity() * factor);
-    }
-    desiredLinearAcceleration = desiredLinearVelocity - character.GetLinearVelocity();
-    desiredLinearAcceleration.NormSafe();
-    desiredLinearAcceleration.Scale(character.GetMaxAcceleration());
 
-    outLinearAcceleration = desiredLinearAcceleration;
+    desiredAngularAcceleration = desiredAngularVelocity - character.GetAngularVelocity();
+    if (desiredAngularAcceleration > params.max_angular_acceleration)
+        desiredAngularAcceleration = params.max_angular_acceleration;
+
+    outAngularAcceleration = desiredAngularAcceleration;
 }
 
 void SteeringAlign::DrawDebug() {
     MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
 
-    gfxDevice.SetPenColor(1.0f, 0.0f, 0.0f, 0.5f);
+    /*gfxDevice.SetPenColor(1.0f, 0.0f, 0.0f, 0.5f);
     MOAIDraw::DrawLine(characterLocation,
         characterLocation + desiredLinearVelocity);
 
     gfxDevice.SetPenColor(0.0f, 0.0f, 1.0f, 0.5f);
     MOAIDraw::DrawLine(characterLocation,
         characterLocation + desiredLinearAcceleration);
-
+*/
 }
