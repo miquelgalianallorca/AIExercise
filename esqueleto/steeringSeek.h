@@ -9,7 +9,7 @@ public:
 
     void GetAcceleration(
         Character &character,
-        const USVec2D &targetLocation,
+        const Params &params,
         USVec2D &outLinearAcceleration,
         float &outAngularAcceleration);
 

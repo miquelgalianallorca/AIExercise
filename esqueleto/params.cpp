@@ -47,6 +47,10 @@ bool ReadParams(const char* filename, Params& params)
     if (paramElem)
         paramElem->Attribute("value", &params.dest_radius);
 
+    paramElem = hParams.FirstChildElement("arrive_radius").Element();
+    if (paramElem)
+        paramElem->Attribute("value", &params.arrive_radius);
+
     paramElem = hParams.FirstChildElement("targetPosition").Element();
     if (paramElem)
     {

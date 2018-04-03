@@ -4,16 +4,23 @@
 
 void SteeringArrive::GetAcceleration(
     Character &character,
-    const USVec2D &targetLocation,
+    const Params &params,
     USVec2D &outLinearAcceleration,
     float &outAngularAcceleration)
 {
     characterLocation = character.GetLoc();
 
-    desiredLinearVelocity = targetLocation - character.GetLoc();
+    desiredLinearVelocity = params.targetPosition - character.GetLoc();
+    float length = desiredLinearVelocity.Length();
     desiredLinearVelocity.NormSafe();
-    desiredLinearVelocity.Scale(character.GetMaxVelocity());
-
+    if (length > params.arrive_radius) {
+        desiredLinearVelocity.Scale(character.GetMaxVelocity());
+    }
+    else {
+        // Reduce speed
+        float factor = length / params.arrive_radius;
+        desiredLinearVelocity.Scale(character.GetMaxVelocity() * factor);
+    }
     desiredLinearAcceleration = desiredLinearVelocity - character.GetLinearVelocity();
     desiredLinearAcceleration.NormSafe();
     desiredLinearAcceleration.Scale(character.GetMaxAcceleration());
@@ -31,4 +38,5 @@ void SteeringArrive::DrawDebug() {
     gfxDevice.SetPenColor(0.0f, 0.0f, 1.0f, 0.5f);
     MOAIDraw::DrawLine(characterLocation,
         characterLocation + desiredLinearAcceleration);
+
 }

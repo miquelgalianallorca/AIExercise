@@ -4,13 +4,13 @@
 
 void SteeringSeek::GetAcceleration(
     Character &character,
-    const USVec2D &targetLocation,
+    const Params &params,
     USVec2D &outLinearAcceleration,
     float &outAngularAcceleration)
 {
     characterLocation = character.GetLoc();
 
-    desiredLinearVelocity = targetLocation - character.GetLoc();
+    desiredLinearVelocity = params.targetPosition - character.GetLoc();
     desiredLinearVelocity.NormSafe();
     desiredLinearVelocity.Scale(character.GetMaxVelocity());
     
