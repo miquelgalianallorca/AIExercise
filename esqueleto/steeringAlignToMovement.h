@@ -1,12 +1,12 @@
 #pragma once
 
-#include "steering.h"
+#include "steeringAlign.h"
 
-class SteeringSeek : public Steering {
+class SteeringAlignToMovement : public Steering {
 public:
-    SteeringSeek()  {}
-    ~SteeringSeek() {}
-
+    SteeringAlignToMovement()  {}
+    ~SteeringAlignToMovement() {}
+    
     void GetAcceleration(
         Character &character,
         Params &params,
@@ -16,7 +16,6 @@ public:
     void DrawDebug();
 
 private:
-    USVec2D characterLocation;
-    USVec2D desiredLinearVelocity;
-    USVec2D desiredLinearAcceleration;
+    SteeringAlign steeringAlign;
 };
+

@@ -4,7 +4,7 @@
 
 void SteeringSeek::GetAcceleration(
     Character &character,
-    const Params &params,
+    Params &params,
     USVec2D &outLinearAcceleration,
     float &outAngularAcceleration)
 {

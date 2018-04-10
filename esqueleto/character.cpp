@@ -19,6 +19,7 @@ Character::~Character()
 void Character::OnStart()
 {
     ReadParams("params.xml", mParams);
+    steeringPathFollow.ReadPath("path.xml");
 }
 
 void Character::OnStop()
@@ -31,7 +32,9 @@ void Character::OnUpdate(float step)
     // Update acceleration with steering
     USVec2D linearAcceleration(0.f, 0.f);
     float   angularAcceleration = 0.f;
-    steeringAlign.GetAcceleration(*this, mParams,
+    steeringArrive.GetAcceleration(*this, mParams,
+        linearAcceleration, angularAcceleration);
+    steeringAlignToMovement.GetAcceleration(*this, mParams,
         linearAcceleration, angularAcceleration);
 
     // Update velocity with acceleration
@@ -61,8 +64,11 @@ void Character::DrawDebug()
     /*MOAIDraw::DrawEllipseFill(mParams.targetPosition.mX, mParams.targetPosition.mY,
         10.f, 10.f, 3);
     MOAIDraw::DrawEllipseOutline(mParams.targetPosition.mX, mParams.targetPosition.mY,
-        mParams.arrive_radius, mParams.arrive_radius, 12);*/
-    steeringAlign.DrawDebug();
+        mParams.arrive_radius, mParams.arrive_radius, 12);
+    steeringArrive.DrawDebug();
+    steeringAlignToMovement.DrawDebug();
+*/
+    steeringPathFollow.DrawDebug();
 }
 
 

@@ -26,6 +26,12 @@
     <ClCompile Include="steeringAlign.cpp">
       <Filter>steeringBehaviors</Filter>
     </ClCompile>
+    <ClCompile Include="steeringAlignToMovement.cpp">
+      <Filter>steeringBehaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="steeringPathFollow.cpp">
+      <Filter>steeringBehaviors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -53,6 +59,12 @@
     <ClInclude Include="steeringAlign.h">
       <Filter>steeringBehaviors</Filter>
     </ClInclude>
+    <ClInclude Include="steeringAlignToMovement.h">
+      <Filter>steeringBehaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="steeringPathFollow.h">
+      <Filter>steeringBehaviors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="host">
@@ -72,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="sample\params.xml">
+      <Filter>sample</Filter>
+    </Xml>
+    <Xml Include="sample\path.xml">
       <Filter>sample</Filter>
     </Xml>
   </ItemGroup>

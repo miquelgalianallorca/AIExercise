@@ -10,7 +10,7 @@ public:
 
     virtual void GetAcceleration(
         Character &character,
-        const Params &params,
+        Params &params,
         USVec2D &outLinearAcceleration,
         float &outAngularAcceleration) = 0;
     virtual void DrawDebug() = 0;

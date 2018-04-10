@@ -3,7 +3,9 @@
 
 #include <moaicore/MOAIEntity2D.h>
 #include <params.h>
-#include "steeringAlign.h"
+#include "steeringArrive.h"
+#include "steeringAlignToMovement.h"
+#include "steeringPathFollow.h"
 
 class Character: public MOAIEntity2D
 {
@@ -33,8 +35,10 @@ private:
 	float mAngularVelocity;
 	
 	Params mParams;
-    SteeringAlign steeringAlign;
-	
+    SteeringArrive          steeringArrive;
+    SteeringAlignToMovement steeringAlignToMovement;
+    SteeringPathFollow      steeringPathFollow;
+
 // Lua configuration
 public:
 	virtual void RegisterLuaFuncs(MOAILuaState& state);

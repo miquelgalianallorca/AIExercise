@@ -4,7 +4,7 @@
 
 void SteeringAlign::GetAcceleration(
     Character &character,
-    const Params &params,
+    Params &params,
     USVec2D &outLinearAcceleration,
     float &outAngularAcceleration)
 {
@@ -18,7 +18,7 @@ void SteeringAlign::GetAcceleration(
         desiredAngularVelocity -= 2 * 180;
     else if (desiredAngularVelocity < -180)
         desiredAngularVelocity += 2 * 180;
-    
+    // Max limits
     if (desiredAngularVelocity > params.max_angular_velocity)
         desiredAngularVelocity = params.max_angular_velocity;
     
@@ -35,14 +35,5 @@ void SteeringAlign::GetAcceleration(
 }
 
 void SteeringAlign::DrawDebug() {
-    MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
-
-    /*gfxDevice.SetPenColor(1.0f, 0.0f, 0.0f, 0.5f);
-    MOAIDraw::DrawLine(characterLocation,
-        characterLocation + desiredLinearVelocity);
-
-    gfxDevice.SetPenColor(0.0f, 0.0f, 1.0f, 0.5f);
-    MOAIDraw::DrawLine(characterLocation,
-        characterLocation + desiredLinearAcceleration);
-*/
+    //MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
 }

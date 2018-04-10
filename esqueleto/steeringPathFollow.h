@@ -2,11 +2,12 @@
 
 #include "steering.h"
 
-class SteeringArrive : public Steering {
+class SteeringPathFollow : public Steering {
 public:
-    SteeringArrive()  {}
-    ~SteeringArrive() {}
+    SteeringPathFollow()  {}
+    ~SteeringPathFollow() {}
 
+    bool ReadPath(const char* filename);
     void GetAcceleration(
         Character &character,
         Params &params,
@@ -16,6 +17,8 @@ public:
     void DrawDebug();
 
 private:
+    std::vector<USVec2D> path;
+
     USVec2D characterLocation;
     USVec2D desiredLinearVelocity;
     USVec2D desiredLinearAcceleration;

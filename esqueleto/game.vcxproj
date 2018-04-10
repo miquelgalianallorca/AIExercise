@@ -135,7 +135,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="steeringAlign.cpp" />
+    <ClCompile Include="steeringAlignToMovement.cpp" />
     <ClCompile Include="steeringArrive.cpp" />
+    <ClCompile Include="steeringPathFollow.cpp" />
     <ClCompile Include="steeringSeek.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,7 +150,9 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="steering.h" />
     <ClInclude Include="steeringAlign.h" />
+    <ClInclude Include="steeringAlignToMovement.h" />
     <ClInclude Include="steeringArrive.h" />
+    <ClInclude Include="steeringPathFollow.h" />
     <ClInclude Include="steeringSeek.h" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="sample\params.xml" />
+    <Xml Include="sample\path.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
