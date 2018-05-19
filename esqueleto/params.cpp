@@ -36,20 +36,16 @@ bool ReadParams(const char* filename, Params& params)
     //}
 
     TiXmlElement* paramElem = hParams.FirstChildElement("max_velocity").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.max_velocity);
+    if (paramElem) paramElem->Attribute("value", &params.max_velocity);
 
     paramElem = hParams.FirstChildElement("max_acceleration").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.max_acceleration);
+    if (paramElem) paramElem->Attribute("value", &params.max_acceleration);
 
     paramElem = hParams.FirstChildElement("arrive_radius").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.arrive_radius);
+    if (paramElem) paramElem->Attribute("value", &params.arrive_radius);
 
     paramElem = hParams.FirstChildElement("dest_radius").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.dest_radius);
+    if (paramElem) paramElem->Attribute("value", &params.dest_radius);
 
     paramElem = hParams.FirstChildElement("targetPosition").Element();
     if (paramElem)
@@ -59,24 +55,27 @@ bool ReadParams(const char* filename, Params& params)
     }
 
     paramElem = hParams.FirstChildElement("max_angular_velocity").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.max_angular_velocity);
+    if (paramElem) paramElem->Attribute("value", &params.max_angular_velocity);
 
     paramElem = hParams.FirstChildElement("max_angular_acceleration").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.max_angular_acceleration);
+    if (paramElem) paramElem->Attribute("value", &params.max_angular_acceleration);
 
     paramElem = hParams.FirstChildElement("angular_arrive_radius").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.angular_arrive_radius);
+    if (paramElem) paramElem->Attribute("value", &params.angular_arrive_radius);
 
     paramElem = hParams.FirstChildElement("angular_dest_radius").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.angular_dest_radius);
+    if (paramElem) paramElem->Attribute("value", &params.angular_dest_radius);
 
     paramElem = hParams.FirstChildElement("targetRotation").Element();
-    if (paramElem)
-        paramElem->Attribute("value", &params.targetRotation);
+    if (paramElem) paramElem->Attribute("value", &params.targetRotation);
 
+    // ================================================================================
+    paramElem = hParams.FirstChildElement("look_ahead").Element();
+    if (paramElem) paramElem->Attribute("value", &params.look_ahead);
+
+    paramElem = hParams.FirstChildElement("time_ahead").Element();
+    if (paramElem) paramElem->Attribute("value", &params.time_ahead);
+    // ================================================================================
+    
     return true;
 }

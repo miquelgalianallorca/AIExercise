@@ -32,10 +32,9 @@ void Character::OnUpdate(float step)
     // Update acceleration with steering
     USVec2D linearAcceleration(0.f, 0.f);
     float   angularAcceleration = 0.f;
-    steeringArrive.GetAcceleration(*this, mParams,
-        linearAcceleration, angularAcceleration);
-    steeringAlignToMovement.GetAcceleration(*this, mParams,
-        linearAcceleration, angularAcceleration);
+    /*steeringArrive.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
+    steeringAlignToMovement.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);*/
+    steeringPathFollow.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
 
     // Update velocity with acceleration
     USVec2D newLinearVel = GetLinearVelocity() +

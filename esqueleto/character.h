@@ -3,8 +3,8 @@
 
 #include <moaicore/MOAIEntity2D.h>
 #include <params.h>
-#include "steeringArrive.h"
-#include "steeringAlignToMovement.h"
+//#include "steeringArrive.h"
+//#include "steeringAlignToMovement.h"
 #include "steeringPathFollow.h"
 
 class Character: public MOAIEntity2D
@@ -35,8 +35,8 @@ private:
 	float mAngularVelocity;
 	
 	Params mParams;
-    SteeringArrive          steeringArrive;
-    SteeringAlignToMovement steeringAlignToMovement;
+    //SteeringArrive          steeringArrive;
+    //SteeringAlignToMovement steeringAlignToMovement;
     SteeringPathFollow      steeringPathFollow;
 
 // Lua configuration

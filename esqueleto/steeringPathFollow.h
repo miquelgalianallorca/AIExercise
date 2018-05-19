@@ -1,6 +1,7 @@
 #pragma once
 
 #include "steering.h"
+#include "steeringSeek.h"
 
 class SteeringPathFollow : public Steering {
 public:
@@ -17,9 +18,15 @@ public:
     void DrawDebug();
 
 private:
+    void UpdatePursueLocation(float lookAhead);
+
+    // Delegate Steering
+    SteeringSeek steeringSeek;
+
     std::vector<USVec2D> path;
 
     USVec2D characterLocation;
-    USVec2D desiredLinearVelocity;
-    USVec2D desiredLinearAcceleration;
+    USVec2D pursueLocation;
+    //USVec2D desiredLinearVelocity;
+    //USVec2D desiredLinearAcceleration;
 };

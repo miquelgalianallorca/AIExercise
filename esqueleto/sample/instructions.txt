@@ -1,2 +1,2 @@
 Ejecutar en terminal:
-game test.lua
+game_pX test.lua
