@@ -10,7 +10,7 @@ void SteeringObstacleAvoidance::GetAcceleration(
     float &outAngularAcceleration)
 {
     characterLocation = character.GetLoc();
-    desiredLinearAcceleration = USVec2D(0.f, 0.f);
+    desiredLinearAcceleration = outLinearAcceleration;
 
     USVec2D characterDirection = character.GetLinearVelocity();
     characterDirection.NormSafe(); //np

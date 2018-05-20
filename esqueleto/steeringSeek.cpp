@@ -25,10 +25,8 @@ void SteeringSeek::DrawDebug() {
     MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
 
     gfxDevice.SetPenColor(1.0f, 0.0f, 0.0f, 0.5f);
-    MOAIDraw::DrawLine(characterLocation,
-        characterLocation + desiredLinearVelocity);
+    MOAIDraw::DrawLine(characterLocation, characterLocation + desiredLinearVelocity);
 
     gfxDevice.SetPenColor(0.0f, 0.0f, 1.0f, 0.5f);
-    MOAIDraw::DrawLine(characterLocation,
-        characterLocation + desiredLinearAcceleration);
+    MOAIDraw::DrawLine(characterLocation, characterLocation + desiredLinearAcceleration);
 }

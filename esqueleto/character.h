@@ -4,6 +4,7 @@
 #include <moaicore/MOAIEntity2D.h>
 #include <params.h>
 #include "steeringObstacleAvoidance.h"
+#include "steeringPathFollow.h"
 
 class Character: public MOAIEntity2D
 {
@@ -33,6 +34,8 @@ private:
 	float mAngularVelocity;
 	
 	Params mParams;
+
+    SteeringPathFollow steeringPathFollow;
     SteeringObstacleAvoidance steeringObstacleAvoidance;
 
 // Lua configuration

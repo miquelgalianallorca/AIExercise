@@ -19,6 +19,7 @@ Character::~Character()
 void Character::OnStart()
 {
     ReadParams("params.xml", mParams);
+    steeringPathFollow.ReadPath("path.xml");
     steeringObstacleAvoidance.ReadObstacles("obstacles.xml");
 }
 
@@ -28,15 +29,28 @@ void Character::OnStop()
 
 void Character::OnUpdate(float step)
 {
-    // Update acceleration with steering
+    //// Update acceleration with steerings
+    //USVec2D linearAcceleration1(0.f, 0.f);
+    //float   angularAcceleration1 = 0.f;
+    //steeringObstacleAvoidance.GetAcceleration(*this, mParams, linearAcceleration1, angularAcceleration1);
+    //
+    //USVec2D linearAcceleration2(0.f, 0.f);
+    //float   angularAcceleration2 = 0.f;
+    //steeringPathFollow.GetAcceleration(*this, mParams, linearAcceleration2, angularAcceleration2);
+
+    //// Combine steerings
+    //float avoidV = 1.f;
+    //float followV = 0.f;
+    //USVec2D linearAcceleration = linearAcceleration1 * avoidV + linearAcceleration2 * followV;
+    //float   angularAcceleration = angularAcceleration1 * avoidV + angularAcceleration2 * followV;
+
     USVec2D linearAcceleration(0.f, 0.f);
     float   angularAcceleration = 0.f;
-
+    //steeringPathFollow.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
     steeringObstacleAvoidance.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
 
     // Update velocity with acceleration
-    USVec2D newLinearVel = GetLinearVelocity() +
-        linearAcceleration * step;
+    USVec2D newLinearVel = GetLinearVelocity() + linearAcceleration * step;
     if (newLinearVel.Length() > mParams.max_velocity) {
         newLinearVel.NormSafe();
         newLinearVel.Scale(mParams.max_velocity);
@@ -57,12 +71,14 @@ void Character::DrawDebug()
     
     // Draw origin
 	MOAIDraw::DrawPoint(0.0f, 0.0f);
-
-    // Draw movement
-    MOAIDraw::DrawLine(GetLoc(), GetLoc() + GetLinearVelocity() * 3);
-    
+        
     // Draw steering
     steeringObstacleAvoidance.DrawDebug();
+    steeringPathFollow.DrawDebug();
+
+    // Draw movement
+    gfxDevice.SetPenColor(0.f, 1.f, 0.f, 1.f);
+    MOAIDraw::DrawLine(GetLoc(), GetLoc() + GetLinearVelocity());
 }
 
 
