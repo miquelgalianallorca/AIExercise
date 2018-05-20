@@ -32,6 +32,9 @@
     <ClCompile Include="steeringPathFollow.cpp">
       <Filter>steeringBehaviors</Filter>
     </ClCompile>
+    <ClCompile Include="steeringObstacleAvoidance.cpp">
+      <Filter>steeringBehaviors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -63,6 +66,9 @@
       <Filter>steeringBehaviors</Filter>
     </ClInclude>
     <ClInclude Include="steeringPathFollow.h">
+      <Filter>steeringBehaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="steeringObstacleAvoidance.h">
       <Filter>steeringBehaviors</Filter>
     </ClInclude>
   </ItemGroup>

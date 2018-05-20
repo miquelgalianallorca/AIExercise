@@ -19,12 +19,11 @@ Character::~Character()
 void Character::OnStart()
 {
     ReadParams("params.xml", mParams);
-    steeringPathFollow.ReadPath("path.xml");
+    steeringObstacleAvoidance.ReadObstacles("obstacles.xml");
 }
 
 void Character::OnStop()
 {
-
 }
 
 void Character::OnUpdate(float step)
@@ -32,9 +31,8 @@ void Character::OnUpdate(float step)
     // Update acceleration with steering
     USVec2D linearAcceleration(0.f, 0.f);
     float   angularAcceleration = 0.f;
-    /*steeringArrive.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
-    steeringAlignToMovement.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);*/
-    steeringPathFollow.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
+
+    steeringObstacleAvoidance.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
 
     // Update velocity with acceleration
     USVec2D newLinearVel = GetLinearVelocity() +
@@ -56,18 +54,15 @@ void Character::DrawDebug()
 	MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
 	gfxDevice.SetPenColor(0.0f, 0.0f, 1.0f, 0.5f);
     gfxDevice.SetPenWidth(3.f);
+    
     // Draw origin
 	MOAIDraw::DrawPoint(0.0f, 0.0f);
 
+    // Draw movement
+    MOAIDraw::DrawLine(GetLoc(), GetLoc() + GetLinearVelocity() * 3);
+    
     // Draw steering
-    /*MOAIDraw::DrawEllipseFill(mParams.targetPosition.mX, mParams.targetPosition.mY,
-        10.f, 10.f, 3);
-    MOAIDraw::DrawEllipseOutline(mParams.targetPosition.mX, mParams.targetPosition.mY,
-        mParams.arrive_radius, mParams.arrive_radius, 12);
-    steeringArrive.DrawDebug();
-    steeringAlignToMovement.DrawDebug();
-*/
-    steeringPathFollow.DrawDebug();
+    steeringObstacleAvoidance.DrawDebug();
 }
 
 

@@ -27,6 +27,4 @@ private:
 
     USVec2D characterLocation;
     USVec2D pursueLocation;
-    //USVec2D desiredLinearVelocity;
-    //USVec2D desiredLinearAcceleration;
 };

@@ -69,7 +69,7 @@ bool ReadParams(const char* filename, Params& params)
     paramElem = hParams.FirstChildElement("targetRotation").Element();
     if (paramElem) paramElem->Attribute("value", &params.targetRotation);
 
-    // ================================================================================
+    // Path follow ====================================================================
     paramElem = hParams.FirstChildElement("look_ahead").Element();
     if (paramElem) paramElem->Attribute("value", &params.look_ahead);
 
@@ -77,5 +77,10 @@ bool ReadParams(const char* filename, Params& params)
     if (paramElem) paramElem->Attribute("value", &params.time_ahead);
     // ================================================================================
     
+    // Obstacle avoidance =============================================================
+    paramElem = hParams.FirstChildElement("char_radius").Element();
+    if (paramElem) paramElem->Attribute("value", &params.char_radius);
+    // ================================================================================
+
     return true;
 }

@@ -17,6 +17,8 @@ struct Params
 
     float look_ahead;
     float time_ahead;
+
+    float char_radius;
 };
 
 bool ReadParams(const char* filename, Params& params);

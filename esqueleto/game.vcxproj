@@ -137,6 +137,7 @@
     <ClCompile Include="steeringAlign.cpp" />
     <ClCompile Include="steeringAlignToMovement.cpp" />
     <ClCompile Include="steeringArrive.cpp" />
+    <ClCompile Include="steeringObstacleAvoidance.cpp" />
     <ClCompile Include="steeringPathFollow.cpp" />
     <ClCompile Include="steeringSeek.cpp" />
   </ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="steeringAlign.h" />
     <ClInclude Include="steeringAlignToMovement.h" />
     <ClInclude Include="steeringArrive.h" />
+    <ClInclude Include="steeringObstacleAvoidance.h" />
     <ClInclude Include="steeringPathFollow.h" />
     <ClInclude Include="steeringSeek.h" />
   </ItemGroup>
@@ -159,7 +161,9 @@
     <None Include="sample\test.lua" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="sample\params.xml" />
+    <Xml Include="sample\params.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="sample\path.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
