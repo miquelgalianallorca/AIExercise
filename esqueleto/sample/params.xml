@@ -13,6 +13,6 @@
     <targetRotation value="90"/>
     
 	<look_ahead value="100"/>
-    <char_radius value="4"/>
+    <char_radius value="40"/>
   </params>
 </root>

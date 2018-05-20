@@ -31,6 +31,6 @@ private:
     std::vector<Obstacle> obstacles;
 
     USVec2D characterLocation;
-    //USVec2D characterDirection;
     USVec2D characterAheadVector;
+    USVec2D desiredLinearAcceleration;
 };

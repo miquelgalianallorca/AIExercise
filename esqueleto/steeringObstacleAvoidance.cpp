@@ -10,6 +10,7 @@ void SteeringObstacleAvoidance::GetAcceleration(
     float &outAngularAcceleration)
 {
     characterLocation = character.GetLoc();
+    desiredLinearAcceleration = USVec2D(0.f, 0.f);
 
     USVec2D characterDirection = character.GetLinearVelocity();
     characterDirection.NormSafe(); //np
@@ -27,10 +28,17 @@ void SteeringObstacleAvoidance::GetAcceleration(
             // Ignore if it's behind
             if (dot > 0) {
                 // Calculate steering
-                // ...
-            }            
+                USVec2D avoidVelocity = obstacle.closestPointInCharDir - obstacle.center;
+                avoidVelocity.NormSafe();                
+                // Steering strength (Penetration based)
+                avoidVelocity.Scale(params.max_velocity / diff);
+                
+                desiredLinearAcceleration += avoidVelocity;
+            }
         }
     }
+
+    outLinearAcceleration = desiredLinearAcceleration;
 }
 
 void SteeringObstacleAvoidance::DrawDebug() {
