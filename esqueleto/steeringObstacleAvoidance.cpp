@@ -31,13 +31,15 @@ void SteeringObstacleAvoidance::GetAcceleration(
                 USVec2D avoidVelocity = obstacle.closestPointInCharDir - obstacle.center;
                 avoidVelocity.NormSafe();                
                 // Steering strength (Penetration based)
-                avoidVelocity.Scale(params.max_velocity / diff);
+                avoidVelocity.Scale(params.max_velocity); // /diff?
                 
                 desiredLinearAcceleration += avoidVelocity;
             }
         }
     }
 
+    desiredLinearAcceleration.NormSafe();
+    desiredLinearAcceleration.Scale(params.max_acceleration);
     outLinearAcceleration = desiredLinearAcceleration;
 }
 

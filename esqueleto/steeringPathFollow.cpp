@@ -18,7 +18,7 @@ void SteeringPathFollow::GetAcceleration(
 }
 
 void SteeringPathFollow::DrawDebug() {
-    steeringSeek.DrawDebug();
+    //steeringSeek.DrawDebug();
 
     MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
     gfxDevice.SetPenColor(0.0f, 1.0f, 1.0f, 0.5f);
@@ -32,10 +32,9 @@ void SteeringPathFollow::DrawDebug() {
         }
     }
 
-    // Draw Pursue
+    // Draw Pursue target
     gfxDevice.SetPenColor(1.f, 1.f, 0.f, 1.f);
     MOAIDraw::DrawEllipseFill(pursueLocation.mX, pursueLocation.mY, 6.f, 6.f, 10);
-    MOAIDraw::DrawLine(pursueLocation, characterLocation);
 }
 
 bool SteeringPathFollow::ReadPath(const char *filename) {
@@ -68,14 +67,21 @@ bool SteeringPathFollow::ReadPath(const char *filename) {
 void SteeringPathFollow::UpdatePursueLocation(float lookAhead) {
     // Find closest segment of path
     USVec2D closestPointLoc, nextPointLoc;
+    USVec2D nextPointLoc2;
     float closestDist = 9999999.f;
     for (size_t i = 0; i < path.size(); ++i) {
         float dist = characterLocation.Dist(path[i]);
         if (dist < closestDist) {
             closestPointLoc = path[i];
-            if (i < path.size() - 1)
+            if (i < path.size() - 1) {
                 nextPointLoc = path[i + 1];
-            else nextPointLoc = path[i];
+                if (i < path.size() - 2)
+                    nextPointLoc2 = path[i + 2];/////
+            }
+            else {
+                nextPointLoc = path[i];
+                nextPointLoc2 = path[i];//////
+            }
             closestDist = dist;
         }
     }
@@ -103,4 +109,15 @@ void SteeringPathFollow::UpdatePursueLocation(float lookAhead) {
 
     // Add lookAhead to projection
     pursueLocation += segmentDir * lookAhead;
+
+    // Clamp ahead position to path
+    float distAhead = pursueLocation.Dist(characterLocation);
+    float distNextPoint = nextPointLoc.Dist(characterLocation);
+    float diffDist = distAhead - distNextPoint;
+    if (diffDist > 0) {
+        USVec2D nextSegment = nextPointLoc2 - nextPointLoc;
+        nextSegment.NormSafe();
+        nextSegment.Scale(diffDist);
+        pursueLocation = nextPointLoc + nextSegment;
+    }    
 }

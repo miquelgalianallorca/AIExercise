@@ -37,6 +37,8 @@ private:
 
     SteeringPathFollow steeringPathFollow;
     SteeringObstacleAvoidance steeringObstacleAvoidance;
+    USVec2D followingAcceleration;
+    USVec2D avoidanceAcceleration;
 
 // Lua configuration
 public:

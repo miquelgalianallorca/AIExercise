@@ -12,7 +12,7 @@
     <angular_dest_radius value="0.2"/>
     <targetRotation value="90"/>
     
-	<look_ahead value="100"/>
+	<look_ahead value="60"/>
     <time_ahead value="4"/>
     <char_radius value="100"/>
   </params>

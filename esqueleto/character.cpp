@@ -29,26 +29,17 @@ void Character::OnStop()
 
 void Character::OnUpdate(float step)
 {
-    //// Update acceleration with steerings
-    //USVec2D linearAcceleration1(0.f, 0.f);
-    //float   angularAcceleration1 = 0.f;
-    //steeringObstacleAvoidance.GetAcceleration(*this, mParams, linearAcceleration1, angularAcceleration1);
-    //
-    //USVec2D linearAcceleration2(0.f, 0.f);
-    //float   angularAcceleration2 = 0.f;
-    //steeringPathFollow.GetAcceleration(*this, mParams, linearAcceleration2, angularAcceleration2);
+    // Update acceleration with steerings
+    float angularAcceleration = 0.f;
+    
+    avoidanceAcceleration = USVec2D(0.f, 0.f);
+    followingAcceleration = USVec2D(0.f, 0.f);
+    steeringObstacleAvoidance.GetAcceleration(*this, mParams, avoidanceAcceleration, angularAcceleration);
+    steeringPathFollow.GetAcceleration(*this, mParams, followingAcceleration, angularAcceleration);
 
-    //// Combine steerings
-    //float avoidV = 1.f;
-    //float followV = 0.f;
-    //USVec2D linearAcceleration = linearAcceleration1 * avoidV + linearAcceleration2 * followV;
-    //float   angularAcceleration = angularAcceleration1 * avoidV + angularAcceleration2 * followV;
-
-    USVec2D linearAcceleration(0.f, 0.f);
-    float   angularAcceleration = 0.f;
-    //steeringPathFollow.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
-    steeringObstacleAvoidance.GetAcceleration(*this, mParams, linearAcceleration, angularAcceleration);
-
+    // Combine steerings
+    USVec2D linearAcceleration = avoidanceAcceleration + followingAcceleration;
+    
     // Update velocity with acceleration
     USVec2D newLinearVel = GetLinearVelocity() + linearAcceleration * step;
     if (newLinearVel.Length() > mParams.max_velocity) {
@@ -79,6 +70,9 @@ void Character::DrawDebug()
     // Draw movement
     gfxDevice.SetPenColor(0.f, 1.f, 0.f, 1.f);
     MOAIDraw::DrawLine(GetLoc(), GetLoc() + GetLinearVelocity());
+    gfxDevice.SetPenWidth(1.f);
+    MOAIDraw::DrawLine(GetLoc(), GetLoc() + avoidanceAcceleration);
+    MOAIDraw::DrawLine(GetLoc(), GetLoc() + followingAcceleration);
 }
 
 
