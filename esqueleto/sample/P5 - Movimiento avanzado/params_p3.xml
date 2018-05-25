@@ -1,0 +1,19 @@
+<root>
+	<params>
+    <max_velocity value="60"/>
+	<max_acceleration value="180"/>
+	<dest_radius value="1"/>
+    <arrive_radius value="60"/>
+	<targetPosition x="400" y="300"/>
+
+    <max_angular_velocity value="10"/>
+    <max_angular_acceleration value="250"/>
+	<angular_arrive_radius value="20"/>
+    <angular_dest_radius value="0.2"/>
+    <targetRotation value="90"/>
+    
+	<look_ahead value="60"/>
+    <time_ahead value="4"/>
+    <char_radius value="100"/>
+  </params>
+</root>
